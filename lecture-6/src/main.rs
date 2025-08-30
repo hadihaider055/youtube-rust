@@ -17,7 +17,7 @@ fn main() {
     // let abc_val: Option<&i64> = Some(&new_vec_2[2]);
 
     // for i in &mut new_vec_2 {
-    //     *i *= 5;
+    //     *i *= 5; /// i = i*5
     // }
 
     // println!("the vector value: {:?}", new_vec_2);
