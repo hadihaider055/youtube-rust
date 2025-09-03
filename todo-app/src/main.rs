@@ -1,6 +1,6 @@
 use std::io::{self, Write};
 
-#[derive(Debug)]
+#[derive(Debug, PartialEq)]
 struct Task {
     task: String,
     is_completed: bool,
@@ -66,7 +66,7 @@ fn add_todo(tasks: &mut Vec<Task>) {
         .expect("Failed to read line");
 
     tasks.push(Task {
-        task: task_input,
+        task: task_input.trim().to_string(),
         is_completed: false,
     })
 }
@@ -93,5 +93,42 @@ fn edit_todo(tasks: &mut Vec<Task>) {
             println!("Error");
             return;
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn test_view_todos() {
+        let todos: Vec<Task> = Vec::new();
+
+        view_todos(&todos)
+    }
+
+    #[test]
+    fn test_add_todo() {
+        let mut todos: Vec<Task> = Vec::new(); // []
+
+        add_todo(&mut todos); // [Task{task: "", is_completed: false}]
+
+        assert_eq!(
+            todos[0],
+            Task {
+                task: "Reading book".to_string(),
+                is_completed: false
+            }
+        );
+
+        edit_todo(&mut todos);
+
+        assert_eq!(
+            todos[0],
+            Task {
+                task: "Reading book".to_string(),
+                is_completed: true
+            }
+        )
     }
 }
