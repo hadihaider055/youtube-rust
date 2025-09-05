@@ -24,9 +24,9 @@ impl Config {
 pub fn search_query<'a>(query: &str, content: &'a str) -> Vec<&'a str> {
     let mut output: Vec<&str> = Vec::new();
 
-    for line in content.lines() {
+    for (i, line) in content.lines().enumerate() {
         if line.to_lowercase().contains(&query.to_lowercase()) {
-            println!("{}", line);
+            println!("Line {}: {}", i + 1, line);
             output.push(line);
         }
     }
