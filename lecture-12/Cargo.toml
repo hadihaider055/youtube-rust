@@ -1,0 +1,18 @@
+[package]
+name = "cli_clap"
+version = "0.1.0"
+edition = "2024"
+license = "MIT"
+description = "A CLI Project built with Clap crate"
+
+[dependencies]
+clap = { version = "4.5.47", features = ["derive"] }
+
+# [profile.dev]
+# opt-level = 0
+
+# [profile.release]
+# opt-level = 3
+
+[workspace]
+members = ["workspace_1", "workspace_2"]
